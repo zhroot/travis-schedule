@@ -23,9 +23,7 @@ before_script:
 script:
 - cd ./auto-gen && node main.js
 
-before_deploy:
+after_success:
 - cp -r ./auto-gen/publish/* ./publish/
-
-deploy:
 - cd ./publish/ && git add -A . && git commit -m 'by travis bot' && git push
 
