@@ -13,8 +13,8 @@ before_install:
 install:
 - mkdir auto-gen
 - mkdir publish
-- git clone web_gen_url ./auto-gen
-- git clone publish_url ./publish
+- git clone $web_gen_url ./auto-gen
+- git clone $publish_url ./publish
 
 before_script:
 - cd ./auto-gen && npm install
