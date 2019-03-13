@@ -17,16 +17,17 @@ install:
 - git clone $publish_url ./publish
 
 before_script:
-- pwd
-- cd ./auto-gen && npm install
-- pwd
+- cd ./auto-gen
+- npm install
 
 script:
-- pwd
-- cd ./auto-gen && node main.js
-- pwd
+- node main.js
 
 after_success:
-- cp -r ./auto-gen/publish/* ./publish/
-- cd ./publish/ && git add -A . && git commit -m 'by travis bot' && git push
+- cd ..
+- \cp -rf ./auto-gen/publish ./publish
+- cd ./publish/ 
+- git add -A . 
+- git commit -m 'by travis bot' 
+- git push
 
