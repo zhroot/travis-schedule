@@ -14,6 +14,7 @@ install:
 - mkdir auto-gen
 - mkdir publish
 - git clone $web_gen_url ./auto-gen
+- mkdir auto-gen/publish
 - git clone $publish_url ./publish
 
 before_script:
