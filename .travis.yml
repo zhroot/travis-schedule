@@ -10,4 +10,22 @@ before_install:
 - git config --global user.name 'zhroot'
 - git config --global user.email '271417377@qq.com'
 
-script: node -v
+install:
+- mkdir auto-gen
+- mkdir publish
+- git clone web_gen_url ./auto-gen
+- git clone publish_url ./publish
+
+before_script:
+- cd ./auto-gen && npm install
+
+
+script:
+- cd ./auto-gen && node main.js
+
+before_deploy:
+- cp -r ./auto-gen/publish/* ./publish/
+
+deploy:
+- cd ./publish/ && git add -A . && git commit -m 'by travis bot' && git push
+
